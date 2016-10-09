@@ -1,0 +1,73 @@
+<div class="stepwizard col-xs-12 col-md-6">
+  <form (ngSubmit)="onSubmit()">
+    <h1>Register</h1>
+
+    <progress-bar [step]=1></progress-bar>
+
+    <h2>Ninja Details</h2>
+    <p>Up to 4 ninjas can participate in a project. You can add a ninja by pressing the "Add Ninja" button at the bottom of the page.</p>
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <div class="panel panel-default" *ngFor="let ninja of ninjas; let in=index; let first=first">
+        <div class="panel-heading" role="tab" id="heading{{in}}">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{in}}" aria-expanded="true">
+              {{ninja.name || 'Ninja ' + (in+1)}}
+                <span *ngIf="ninja.completed()" class="pull-right text-success"><small>Complete</small> <i class="glyphicon glyphicon-ok"></i></span>
+            </a>
+          </h4>
+        </div>
+        <div id="collapse{{in}}" class="panel-collapse collapse in" role="tabpanel">
+          <div class="panel-body">
+            <div class="form-group">
+              <label [attr.for]="'name'+in">Name</label>
+              <input type="text" class="form-control" [(ngModel)]="ninja.name" name="name{{in}}" id="name{{in}}" placeholder="e.g. John Smith">
+            </div>
+            <div class="form-group" [ngClass]="{'has-success': hasError}">
+              <label [attr.for]="'dateOfBirth'+in">Date of Birth</label>
+              <input type="date" class="form-control" name="dateOfBirth{{in}}" id="dateOfBirth{{in}}" placeholder="e.g. 23/8/2005" [(ngModel)]="ninja.dateOfBirth">
+            </div>
+            <div class="form-group">
+              <label [attr.for]="'email'+in">Email</label>
+              <input type="text" class="form-control" name="email{{in}}" id="email{{in}}" [(ngModel)]="ninja.email" placeholder="e.g. hello@coolestprojects.org">
+              <p class="help-block">If you or your ninja deoesn't have their own email, please leave this empty.</p>
+            </div>
+            <div class="form-group">
+              <label [attr.for]="'gender'+in">Gender</label>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender{{in}}" [(ngModel)]="ninja.gender" id="gender{{in}}" value="m">
+                  Male
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender{{in}}" [(ngModel)]="ninja.gender" id="gender{{in}}" value="f">
+                  Female
+                </label>
+              </div>
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender{{in}}" [(ngModel)]="ninja.gender" id="gender{{in}}" value="x">
+                  Undisclosed
+                </label>
+              </div>
+              <p class="help-block">We ask for gender for statistical reasons only. This field is optional, please select undisclosed if you do not wish to supply a gender.</p>
+              <p><small>id: {{ninja.id || "Not saved yet"}}<br>rev: {{ninja.rev}}</small></p>
+            </div>
+            <button type="button" *ngIf="ninjas.length > 1" class="btn btn-danger pull-right" (click)="removeNinja(in)">
+              <span class="glyphicon glyphicon-trash"></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="btn btn-success" *ngIf="ninjas.length < 4" (click)="addNinja()">Add Ninja</button>
+    <button type="submit" class="btn btn-primary pull-right">Register</button>
+  </form>
+</div>
+<div class="col-xs-12 col-md-6">
+  <h1>&nbsp;</h1>
+  <p>Keen to provide information to people who are filling out this form...</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec neque lorem, mattis quis augue aliquet, fringilla congue velit. Cras turpis odio, mattis dapibus porta eget, pulvinar sed justo. Curabitur euismod efficitur turpis, non convallis ex tincidunt ut. Ut magna lectus, convallis eu viverra in, cursus sed tortor. Fusce id est eu sem ornare ornare. Ut blandit metus est. Aliquam tincidunt consectetur nunc, vitae fermentum elit tincidunt ut. Suspendisse rutrum nulla neque, nec sodales lectus dignissim sed. In at nibh ac felis lobortis rutrum.</p>
+  <p>Morbi mattis cursus finibus. In tristique dui non est luctus porttitor. Cras finibus sem vitae porttitor dictum. Morbi massa felis, cursus vel leo eu, tempus sagittis ipsum. Pellentesque ac enim tellus. Vestibulum scelerisque iaculis diam vitae semper. Integer vulputate eu dolor at luctus.</p>
+</div>

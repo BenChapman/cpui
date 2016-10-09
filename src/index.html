@@ -1,14 +1,83 @@
-<!doctype html>
+<!doctype html5>
 <html>
-<head>
-  <meta charset="utf-8">
-  <title>Cpui</title>
-  <base href="/">
+  <head>
+    <title>Coolest Projects Platform</title>
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <app-root>Loading...</app-root>
-</body>
+      .navbar {
+        margin-bottom: 20px;
+      }
+      .navbar-brand {
+        padding: 10px 10px;
+      }
+      .navbar-brand img {
+        height: 30px;
+      }
+      #progressbar {
+        margin-top: 30px;
+      	margin-bottom: 30px;
+      	overflow: hidden;
+      	/*CSS counters to number the steps*/
+      	counter-reset: step;
+        padding: 0;
+      }
+      #progressbar li {
+      	list-style-type: none;
+      	color: black;
+      	text-transform: uppercase;
+      	font-size: 9px;
+      	width: 33.33%;
+      	float: left;
+      	position: relative;
+        text-align: center;
+      }
+      #progressbar li:before {
+      	content: counter(step);
+      	counter-increment: step;
+      	width: 20px;
+      	line-height: 20px;
+      	display: block;
+      	font-size: 10px;
+      	color: #000;
+      	background: #eee;
+      	border-radius: 3px;
+      	margin: 0 auto 5px auto;
+        padding: 0 7px 0;
+      }
+      /*progressbar connectors*/
+      #progressbar li:after {
+      	content: '';
+      	width: 100%;
+      	height: 2px;
+      	background: #eee;
+      	position: absolute;
+      	left: -50%;
+      	top: 9px;
+      	z-index: -1; /*put it behind the numbers*/
+      }
+      #progressbar li:first-child:after {
+      	/*connector not needed before the first step*/
+      	content: none;
+      }
+      /*marking active/completed steps green*/
+      /*The number of the step and the connector before it = green*/
+      #progressbar li.active:before,  #progressbar li.active:after{
+      	background: #27AE60;
+      	color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <app-root>Loading...</app-root>
+  </body>
 </html>
