@@ -1,0 +1,17 @@
+<div class="col-xs-12 col-md-4 col-md-offset-4">
+  <form (ngSubmit)="onSubmit()">
+    <h1>Register</h1>
+
+    <h2>Ninja Details</h2>
+    <div class="form-group" [ngClass]="{'has-success': hasError}">
+      <label for="dateOfBirth">Date of Birth</label>
+      <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" [(ngModel)]="dob">
+    </div>
+    <div class="form-group">
+      <label for="email"><span *ngIf="u13()">Parent </span>Email</label>
+      <input type="text" class="form-control" name="email" id="email" placeholder="e.g. hello@coolestprojects.org">
+      <p  *ngIf="u13()" class="help-block">If your ninja is under 13 we require your email rather than theirs.</p>
+    </div>
+    <button type="submit" class="btn btn-primary pull-right">Next</button>
+  </form>
+</div>

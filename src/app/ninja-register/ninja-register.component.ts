@@ -11,12 +11,13 @@ import { NinjaService } from '../ninja.service';
 })
 export class NinjaRegisterComponent implements OnInit {
   public ninjas: Ninja[];
+  public dojos: { value: number; label: string }[] = [{value: 1, label: "Dublin"},{value: 2, label: "Cork"},{value: 3, label:"DCU"}]
 
   constructor(private ninjaService: NinjaService) {}
 
   ngOnInit() {
     this.ninjas = [new Ninja()];
-    this.ninjaService.getNinjas().subscribe(res => this.ninjas = res)
+    this.ninjaService.getNinjas().subscribe(res => {this.ninjas = res})
   }
 
   onSubmit() {
@@ -31,5 +32,15 @@ export class NinjaRegisterComponent implements OnInit {
     if (this.ninjas.length <= 1) { return false; }
     this.ninjaService.deleteNinja(this.ninjas[index]);
     this.ninjas.splice(index,1);
+  }
+
+  parseDate(date: string): string {
+    return new Date(date).toISOString()
+  }
+
+  u13(dob: Date): boolean {
+    var ageDifMs = Date.now() - new Date(dob).getTime();
+    var ageDate = new Date(ageDifMs); // miliseconds from epoch
+    return Math.abs(ageDate.getUTCFullYear() - 1970) < 13;
   }
 }

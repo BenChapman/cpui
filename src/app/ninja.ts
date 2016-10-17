@@ -1,9 +1,8 @@
 export class Ninja {
-  public id: string;
-  public rev: string;
+  public id: number;
   public name: string;
   public dateOfBirth: string;
-  public email: string
+  public email: string;
   public gender: string;
 
   constructor() {}

@@ -2,12 +2,11 @@
   <form (ngSubmit)="onSubmit()">
     <h1>Register</h1>
 
-    <progress-bar [step]=1></progress-bar>
+    <progress-bar [step]=2></progress-bar>
 
-    <h2>Ninja Details</h2>
-    <p>Up to 4 ninjas can participate in a project. You can add a ninja by pressing the "Add Ninja" button at the bottom of the page.</p>
+    <h2>Parent Details</h2>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-      <div class="panel panel-default" *ngFor="let ninja of ninjas; let in=index; let first=first">
+      <div class="panel panel-default" >
         <div class="panel-heading" role="tab" id="heading{{in}}">
           <h4 class="panel-title">
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse{{in}}" aria-expanded="true">

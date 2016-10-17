@@ -15,8 +15,8 @@
           <li class="active"><a href="#">Home</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Login</a></li>
-          <li><a href="#">Logout</a></li>
+          <li><a href="#" *ngIf="!loggedIn()">Login</a></li>
+          <li><a href="#" *ngIf="loggedIn()">Logout</a></li>
         </ul>
       </div><!--/.nav-collapse -->
     </div><!--/.container-fluid -->
